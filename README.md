@@ -1,6 +1,6 @@
 # Yue S3 LCD
 
-基于 ESP32-S3 的语音助手固件，适配 ESP32-S3-WROOM-1-N16R8 开发板。
+基于 ESP32-S3 的早教机，适配 ESP32-S3-WROOM-1-N16R8 开发板。
 
 ## 硬件
 
