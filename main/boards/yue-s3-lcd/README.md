@@ -7,7 +7,7 @@ Custom ESP32-S3 voice assistant board derived from
 
 - ESP32-S3-WROOM-1-N16R8: 16 MB quad SPI flash, 8 MB octal PSRAM
 - Wi-Fi + BLE 5
-- ST7789 240x320 SPI LCD
+- ST7789 170x320 SPI LCD
 - Direct I2S microphone and speaker (no external audio codec)
 - BOOT button on GPIO0, status LED on GPIO48
 - Optional lamp output on GPIO18

@@ -10,7 +10,7 @@
 | Flash | 16MB，quad，3.3V |
 | PSRAM | 8MB octal，80MHz |
 | 模块 | ESP32-S3-WROOM-1-N16R8 |
-| 屏幕 | ST7789 240x320 SPI LCD |
+| 屏幕 | ST7789 170x320 SPI LCD |
 | 音频 | 麦克风与扬声器直连 I2S，无独立编解码芯片 |
 
 ## 引脚

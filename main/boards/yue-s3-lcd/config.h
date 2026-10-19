@@ -3,7 +3,7 @@
 
 // Yue S3 LCD board configuration.
 // Based on bread-compact-wifi-lcd: ESP32-S3-WROOM-1 N16R8 with an ST7789
-// 240x320 SPI LCD, direct I2S microphone/speaker, and a lamp on GPIO18.
+// 170x320 SPI LCD, direct I2S microphone/speaker, and a lamp on GPIO18.
 
 #include <driver/gpio.h>
 

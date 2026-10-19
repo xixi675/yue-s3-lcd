@@ -95,7 +95,7 @@ if(CONFIG_BOARD_TYPE_YUE_S3_LCD)
     set(BOARD_DIR "yue-s3-lcd")
     set(BUILTIN_TEXT_FONT font_noto_sans_basic_16_4)
     set(BUILTIN_ICON_FONT font_material_symbols_16_4)
-    set(DEFAULT_EMOJI_COLLECTION noto-color-emoji_32)
+    set(DEFAULT_EMOJI_COLLECTION otto-gif)
 endif()
 
 
