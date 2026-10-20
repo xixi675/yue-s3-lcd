@@ -75,7 +75,7 @@ python -m pip install esptool
 ```powershell
 python -m esptool --chip esp32s3 -p COM7 -b 460800 `
   --before default-reset --after hard-reset `
-  write-flash 0x0 yue-s3-lcd-1.0.0-merged.bin
+  write-flash 0x0 yue-s3-lcd-1.0.1-merged.bin
 ```
 
 Windows 用户也可以使用仓库中的一键脚本：

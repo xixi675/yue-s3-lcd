@@ -11,6 +11,7 @@ protected:
     esp_timer_handle_t connect_timer_ = nullptr;
     bool in_config_mode_ = false;
     NetworkEventCallback network_event_callback_ = nullptr;
+    virtual const char* GetWifiSsidPrefix() const { return "Xiaozhi"; }
 
     virtual std::string GetBoardJson() override;
 

@@ -64,6 +64,9 @@ static const gc9a01_lcd_init_cmd_t gc9107_lcd_init_cmds[] = {
 #define TAG "YueS3LcdBoard"
 
 class YueS3LcdBoard : public WifiBoard {
+protected:
+    const char* GetWifiSsidPrefix() const override { return "xiaoyue"; }
+
 private:
  
     Button boot_button_;
