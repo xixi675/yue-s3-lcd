@@ -3,7 +3,7 @@
 
 // Yue S3 LCD board configuration.
 // Based on bread-compact-wifi-lcd: ESP32-S3-WROOM-1 N16R8 with an ST7789
-// 170x320 SPI LCD, direct I2S microphone/speaker, and a lamp on GPIO18.
+// 170x320 SPI LCD, direct I2S microphone/speaker, and a lamp on GPIO14.
 
 #include <driver/gpio.h>
 
@@ -35,8 +35,8 @@
 #define BUILTIN_LED_GPIO        GPIO_NUM_48
 #define BOOT_BUTTON_GPIO        GPIO_NUM_0
 #define TOUCH_BUTTON_GPIO       GPIO_NUM_NC
-#define VOLUME_UP_BUTTON_GPIO   GPIO_NUM_NC
-#define VOLUME_DOWN_BUTTON_GPIO GPIO_NUM_NC
+#define VOLUME_UP_BUTTON_GPIO   GPIO_NUM_17
+#define VOLUME_DOWN_BUTTON_GPIO GPIO_NUM_18
 
 
 #define DISPLAY_BACKLIGHT_PIN GPIO_NUM_42
@@ -288,6 +288,6 @@
 
 
 // A MCP Test: Control a lamp
-#define LAMP_GPIO GPIO_NUM_18
+#define LAMP_GPIO GPIO_NUM_14
 
 #endif // _BOARD_CONFIG_H_

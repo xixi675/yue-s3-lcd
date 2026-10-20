@@ -21,8 +21,9 @@ Custom ESP32-S3 voice assistant board derived from
 | Speaker DOUT / BCLK / LRCK | 7 / 15 / 16 |
 | LCD MOSI / CLK / DC / RST / CS / Backlight | 47 / 21 / 40 / 45 / 41 / 42 |
 | BOOT button | 0 |
+| Volume up / Volume down (active low) | 17 / 18 |
 | Status LED | 48 |
-| Lamp output | 18 |
+| Lamp output | 14 |
 
 ## Build
 

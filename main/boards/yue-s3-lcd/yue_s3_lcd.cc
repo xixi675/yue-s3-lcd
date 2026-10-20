@@ -19,6 +19,7 @@
 #include <esp_lcd_panel_io.h>
 #include <esp_lcd_panel_ops.h>
 #include <driver/spi_common.h>
+#include <algorithm>
 
 #if defined(LCD_TYPE_ILI9341_SERIAL)
 #include "esp_lcd_ili9341.h"
@@ -70,6 +71,8 @@ protected:
 private:
  
     Button boot_button_;
+    Button volume_up_button_;
+    Button volume_down_button_;
     LcdDisplay* display_;
 
     void InitializeSpi() {
@@ -138,6 +141,25 @@ private:
             }
             app.ToggleChatState();
         });
+
+        volume_up_button_.OnClick([this]() { AdjustVolume(10); });
+        volume_up_button_.OnLongPress([this]() {
+            GetAudioCodec()->SetOutputVolume(100);
+        });
+
+        volume_down_button_.OnClick([this]() { AdjustVolume(-10); });
+        volume_down_button_.OnLongPress([this]() {
+            GetAudioCodec()->SetOutputVolume(0);
+        });
+    }
+
+    void AdjustVolume(int delta) {
+        auto codec = GetAudioCodec();
+        if (codec == nullptr) {
+            return;
+        }
+        int volume = std::clamp(codec->output_volume() + delta, 0, 100);
+        codec->SetOutputVolume(volume);
     }
 
     // 物联网初始化，添加对 AI 可见设备
@@ -147,7 +169,9 @@ private:
 
 public:
     YueS3LcdBoard() :
-        boot_button_(BOOT_BUTTON_GPIO) {
+        boot_button_(BOOT_BUTTON_GPIO),
+        volume_up_button_(VOLUME_UP_BUTTON_GPIO, false, 800, 0),
+        volume_down_button_(VOLUME_DOWN_BUTTON_GPIO, false, 800, 0) {
         InitializeSpi();
         InitializeLcdDisplay();
         InitializeButtons();

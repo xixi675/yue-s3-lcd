@@ -22,8 +22,10 @@
 | LCD MOSI / CLK / DC / RST / CS | 47 / 21 / 40 / 45 / 41 |
 | LCD 背光 | 42 |
 | BOOT 按键 | 0 |
+| 音量加按键，低电平有效 | 17 |
+| 音量减按键，低电平有效 | 18 |
 | 状态灯 | 48 |
-| 示例灯输出 | 18 |
+| 扩展灯输出 | 14 |
 
 ## 功能
 
@@ -75,7 +77,7 @@ python -m pip install esptool
 ```powershell
 python -m esptool --chip esp32s3 -p COM7 -b 460800 `
   --before default-reset --after hard-reset `
-  write-flash 0x0 yue-s3-lcd-1.0.1-merged.bin
+  write-flash 0x0 yue-s3-lcd-1.0.2-merged.bin
 ```
 
 Windows 用户也可以使用仓库中的一键脚本：
