@@ -58,6 +58,36 @@ python scripts/build.py yue-s3-lcd --name yue-s3-lcd
 
 ## 烧录
 
+### 其他人直接烧录预编译固件
+
+从 GitHub Releases 下载最新合并固件：
+
+<https://github.com/xixi675/yue-s3-lcd/releases/latest>
+
+安装烧录工具：
+
+```powershell
+python -m pip install esptool
+```
+
+把开发板连接到电脑，确认串口后执行：
+
+```powershell
+python -m esptool --chip esp32s3 -p COM7 -b 460800 `
+  --before default-reset --after hard-reset `
+  write-flash 0x0 yue-s3-lcd-1.0.0-merged.bin
+```
+
+Windows 用户也可以使用仓库中的一键脚本：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\flash-latest.ps1 -Port COM7
+```
+
+脚本会自动从 GitHub Releases 下载最新合并固件并烧录。
+
+### 从源码编译后烧录
+
 整机一键烧录：
 
 ```powershell
