@@ -8,7 +8,7 @@
 #include "config.h"
 #include "display/lcd_display.h"
 #include "lamp_controller.h"
-#include "led/single_led.h"
+#include "led/gpio_led.h"
 #include "mcp_server.h"
 #include "system_reset.h"
 #include "wifi_board.h"
@@ -60,10 +60,6 @@ static const gc9a01_lcd_init_cmd_t gc9107_lcd_init_cmds[] = {
     {0xf4, (uint8_t[]){0x00, 0x00, 0xFF}, 3, 0},
     {0xba, (uint8_t[]){0xFF, 0xFF}, 2, 0},
 };
-#endif
-
-#if defined(LCD_TYPE_JD9853_SERIAL)
-#include "jd9853_panel.h"
 #endif
 
 #define TAG "YueS3LcdBoard"
@@ -118,8 +114,6 @@ private:
             .init_cmds = gc9107_lcd_init_cmds,
             .init_cmds_size = sizeof(gc9107_lcd_init_cmds) / sizeof(gc9a01_lcd_init_cmd_t),
         };
-#elif defined(LCD_TYPE_JD9853_SERIAL)
-        ESP_ERROR_CHECK(esp_lcd_new_panel_jd9853(panel_io, &panel_config, &panel));
 #else
         ESP_ERROR_CHECK(esp_lcd_new_panel_st7789(panel_io, &panel_config, &panel));
 #endif
@@ -139,6 +133,7 @@ private:
     }
 
     void InitializeButtons() {
+        boot_button_.OnPressDown([]() { ESP_LOGI(TAG, "BOOT pressed"); });
         boot_button_.OnClick([this]() {
             auto& app = Application::GetInstance();
             if (app.GetDeviceState() == kDeviceStateStarting) {
@@ -182,7 +177,8 @@ public:
     }
 
     virtual Led* GetLed() override {
-        static SingleLed led(BUILTIN_LED_GPIO);
+        static GpioLed led(BUILTIN_LED_GPIO, BUILTIN_LED_OUTPUT_INVERT, LEDC_TIMER_1,
+                           LEDC_CHANNEL_1);
         return &led;
     }
 

@@ -5,8 +5,8 @@
         {
             "name": "yue-s3-lcd",
             "sdkconfig_append": [
-                "CONFIG_LCD_JD9853_240X296=y",
-                "CONFIG_OTA_URL=\"http://172.20.10.3:8003/xiaoyue/ota/\"",
+                "CONFIG_LCD_ST7789_170X320=y",
+                "CONFIG_OTA_URL=\"http://172.20.10.4:8003/xiaoyue/ota/\"",
                 "CONFIG_USE_CUSTOM_WAKE_WORD=y",
                 "CONFIG_USE_AFE_WAKE_WORD=n",
                 "CONFIG_USE_ESP_WAKE_WORD=n",

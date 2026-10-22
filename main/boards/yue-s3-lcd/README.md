@@ -8,10 +8,10 @@ Custom ESP32-S3 voice assistant board derived from
 - ESP32-S3-WROOM-1-N16R8: 16 MB quad SPI flash, 8 MB octal PSRAM
 - Wi-Fi + BLE 5
 - Wi-Fi configuration hotspot prefix: `xiaoyue`
-- JD9853 240x296 SPI TFT
+- ST7789 170x320 SPI IPS TFT (T190X7-C30-01)
 - Direct I2S microphone and speaker (no external audio codec)
-- BOOT button on GPIO0, status LED on GPIO48
-- Optional lamp output on GPIO18
+- BOOT button on GPIO48, status LED on GPIO1 (active low)
+- Optional lamp output on GPIO14
 
 ## Pin Map
 
@@ -20,9 +20,10 @@ Custom ESP32-S3 voice assistant board derived from
 | Microphone WS / SCK / DIN | 4 / 5 / 6 |
 | Speaker DOUT / BCLK / LRCK | 7 / 15 / 16 |
 | LCD MOSI / CLK / DC / RST / CS / Backlight | 47 / 21 / 40 / 45 / 41 / 42 |
-| BOOT button | 0 |
-| Volume up / Volume down (active low) | 17 / 18 |
-| Status LED | 48 |
+| BOOT button (active low) | 48 |
+| Volume up / Volume down (active low) | 20 / 19 |
+| Status LED (active low) | 1 |
+| Second indicator LED (active low) | 2 |
 | Lamp output | 14 |
 
 ## Build

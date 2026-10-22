@@ -171,8 +171,6 @@ choice DISPLAY_LCD_TYPE
         bool "GC9A01 240*240 Circle"
     config LCD_NV3030B_240X320
         bool "NV3030B, 分辨率240*320, IPS"
-    config LCD_JD9853_240X296
-        bool "JD9853 240*296"
     config LCD_CUSTOM
         bool "Custom LCD (自定义屏幕参数)"
 endchoice
