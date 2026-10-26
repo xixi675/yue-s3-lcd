@@ -10,7 +10,7 @@
 | Flash | 16MB，quad，3.3V |
 | PSRAM | 8MB octal，80MHz |
 | 模块 | ESP32-S3-WROOM-1-N16R8 |
-| 屏幕 | ST7789 170x320 SPI IPS TFT（T190X7-C30-01） |
+| 屏幕 | ST7789 320x170 横屏 SPI IPS TFT（T190X7-C30-01） |
 | 音频 | 麦克风与扬声器直连 I2S，无独立编解码芯片 |
 
 ## 引脚
@@ -78,7 +78,7 @@ python -m pip install esptool
 ```powershell
 python -m esptool --chip esp32s3 -p COM7 -b 460800 `
   --before default-reset --after hard-reset `
-  write-flash 0x0 yue-s3-lcd-1.0.4-merged.bin
+  write-flash 0x0 yue-s3-lcd-1.0.5-merged.bin
 ```
 
 Windows 用户也可以使用仓库中的一键脚本：

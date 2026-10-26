@@ -145,6 +145,8 @@ choice DISPLAY_LCD_TYPE
         bool "ST7789 240*320, Non-IPS"
     config LCD_ST7789_170X320
         bool "ST7789 170*320"
+    config LCD_ST7789_320X170
+        bool "ST7789 320*170, Landscape"
     config LCD_ST7789_172X320
         bool "ST7789 172*320"
     config LCD_ST7789_240X280
