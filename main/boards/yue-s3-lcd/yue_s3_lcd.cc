@@ -70,6 +70,7 @@ protected:
 
 private:
     Button boot_button_;
+    Button module_boot_button_;
     Button volume_up_button_;
     Button volume_down_button_;
     LcdDisplay* display_;
@@ -134,14 +135,17 @@ private:
 
     void InitializeButtons() {
         boot_button_.OnPressDown([]() { ESP_LOGI(TAG, "BOOT pressed"); });
-        boot_button_.OnClick([this]() {
+        module_boot_button_.OnPressDown([]() { ESP_LOGI(TAG, "Module BOOT pressed"); });
+        auto handle_boot_click = [this]() {
             auto& app = Application::GetInstance();
             if (app.GetDeviceState() == kDeviceStateStarting) {
                 EnterWifiConfigMode();
                 return;
             }
             app.ToggleChatState();
-        });
+        };
+        boot_button_.OnClick(handle_boot_click);
+        module_boot_button_.OnClick(handle_boot_click);
 
         volume_up_button_.OnClick([this]() { AdjustVolume(10); });
         volume_up_button_.OnLongPress([this]() { GetAudioCodec()->SetOutputVolume(100); });
@@ -165,6 +169,7 @@ private:
 public:
     YueS3LcdBoard()
         : boot_button_(BOOT_BUTTON_GPIO),
+          module_boot_button_(GPIO_NUM_0),
           volume_up_button_(VOLUME_UP_BUTTON_GPIO, false, 800, 0),
           volume_down_button_(VOLUME_DOWN_BUTTON_GPIO, false, 800, 0) {
         InitializeSpi();
